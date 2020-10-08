@@ -1,33 +1,5 @@
-# Nomflix
+# youtubeCrawl
 
-Learning React and ES6 by building a Movie Discovery App.
-
-## Screens
-
-- [ ] Home
-- [ ] TV Shows
-- [ ] Search
-- [ ] Detail
-
-## API Verbs
-
-- [x] Now playing (Movie)
-- [x] Upcoming (Movie)
-- [x] Top Rated (TV)
-- [x] Popular (TV, X)
-- [x] Airing Today (TV)
-- [x] TV Show Detail
-- [x] Movie Detail
-- [x] Search (Movie, TV)
-
-## Code Challenges
-
-- [ ] IMDB Link
-- [ ] Tabs inside of Movie / Show Details (YT Videos, Production Company & Countries)
-- [ ] Collections Link
-- [ ] /collections Route
-- [ ] On TV Show, show seasons and creators
-
-# Preview:
-
-Try it on [netlify](https://hungry-noether-8ac1d6.netlify.com/#/)
+* Youtube Crawl 로그인한 유저는 make private버튼 보이게
+* Youtube Crawl 안에있는 Video를 /watch 라우터로 분리
+* /watch 에서는 로그인한 유저는 mylist에 추가 가능 하도록
