@@ -1,0 +1,6 @@
+nodejs 설치
+
+cmd에서 
+npm i -g yarn
+yarn global add create-react-app
+yarn create react-app myProject
