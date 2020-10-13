@@ -64,34 +64,36 @@ const SearchPresenter = ({
       <Loader />
     ) : (
       <>
-        {youTubeResult && youTubeResult.length > 0 && (
-          <Section title="youtube Results">
-            {youTubeResult.map((youtube) => (
-              <Link
-                to={{
-                  pathname: "/ytcrawl",
-                  state: {
-                    youtubeData: youtube,
-                    inputStr: searchTerm,
-                  },
-                }}
-                replace
-              >
-                <Container key={youtube.videoId} onClick={handleOnClick}>
-                  <ImageContainer>
-                    <img
-                      src={
-                        youtube.thumbnailDefault ? youtube.thumbnailDefault : ""
-                      }
-                    />
-                  </ImageContainer>
-                  <Title>{youtube.title}</Title>
-                  <Year>{youtube.publishedAt}</Year>
-                </Container>
-              </Link>
-            ))}
-          </Section>
-        )}
+        {youTubeResult &&
+          youTubeResult.length > 0 && (
+            <Section title="youtube Results">
+              {youTubeResult.map((youtube) => (
+                <Link
+                  to={{
+                    pathname: `/ytcrawl/${youtube.videoId}`,
+                    state: {
+                      youtubeData: youtube,
+                      inputStr: searchTerm,
+                    },
+                  }}
+                >
+                  <Container key={youtube.videoId} onClick={handleOnClick}>
+                    <ImageContainer>
+                      <img
+                        src={
+                          youtube.thumbnailDefault
+                            ? youtube.thumbnailDefault
+                            : ""
+                        }
+                      />
+                    </ImageContainer>
+                    <Title>{youtube.title}</Title>
+                    <Year>{youtube.publishedAt}</Year>
+                  </Container>
+                </Link>
+              ))}
+            </Section>
+          )}
       </>
     )}
   </Container>

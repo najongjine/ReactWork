@@ -68,14 +68,26 @@ const Overview = styled.p`
   line-height: 1.5;
   width: 50%;
 `;
+const Form = styled.form`
+  margin-bottom: 50px;
+  width: 100%;
+`;
+const Input = styled.input`
+  all: unset;
+  font-size: 28px;
+  width: 100%;
+`;
 
 const YoutubeCrawlPresenter = ({
   crawledIdx = null,
   loading = false,
   error = null,
   showVideo = false,
+  inputtedCrawledIdx = null,
+  getNextCrawledIdx,
   clickCrawledIdx,
   changeCrawledIdx,
+  updateInputCrawledIdx,
 }) =>
   loading ? (
     <>
@@ -92,13 +104,28 @@ const YoutubeCrawlPresenter = ({
             url={`http://indj-firewall.duckdns.org/stream?crawledIdx=${crawledIdx}`}
             controls
             playing={true}
-            onEnded={changeCrawledIdx}
+            onEnded={getNextCrawledIdx}
+            config={{
+              file: {
+                attributes: {
+                  controlsList: "nodownload",
+                },
+              },
+            }}
+            onContextMenu={(e) => e.preventDefault()}
           />
         ) : null}
       </ItemContainer>
       <ItemContainer onClick={clickCrawledIdx}>
         crawled idx: {crawledIdx}
       </ItemContainer>
+      <Form onSubmit={changeCrawledIdx}>
+        <Input
+          placeholder="Enter something to change crawledIdx"
+          value={inputtedCrawledIdx}
+          onChange={updateInputCrawledIdx}
+        />
+      </Form>
     </Container>
   );
 /*
