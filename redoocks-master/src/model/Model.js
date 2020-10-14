@@ -1,4 +1,4 @@
-class BookBodel {
+class BookModel {
   constructor() {
     this.books = [
       {
@@ -18,6 +18,7 @@ class BookBodel {
 
   add(book) {
     this.books.push(book);
+    return this.books;
   }
   remove(idx) {
     let temp = this.books[idx];
@@ -27,6 +28,7 @@ class BookBodel {
   }
   update(idx, book) {
     this.books[idx] = book;
+    return book;
   }
   get(idx) {
     return this.books[idx];
