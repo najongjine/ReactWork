@@ -1,9 +1,10 @@
 import React from "react";
-import ReactPlayer from "react-player";
+
 import PropTypes from "prop-types";
 import styled from "styled-components";
 import Helmet from "react-helmet";
 import Loader from "Components/Loader";
+import { Link } from "react-router-dom";
 
 const Container = styled.div`
   height: calc(100vh - 50px);
@@ -80,6 +81,7 @@ const Input = styled.input`
 
 const YoutubeCrawlPresenter = ({
   crawledIdx = null,
+  youtubeData = null,
   loading = false,
   error = null,
   showVideo = false,
@@ -98,27 +100,17 @@ const YoutubeCrawlPresenter = ({
     //jQuery에서 div 숨기기 기능 구현은 스위치 변수 하나를 전달 받고, 그 변수 값에 따라서 div 를 랜더링 할지,
     //null을 랜더링 할지를 결정하면 됨
     <Container>
-      <ItemContainer>
-        {showVideo ? (
-          <ReactPlayer
-            url={`http://indj-firewall.duckdns.org/stream?crawledIdx=${crawledIdx}`}
-            controls
-            playing={true}
-            onEnded={getNextCrawledIdx}
-            config={{
-              file: {
-                attributes: {
-                  controlsList: "nodownload",
-                },
-              },
-            }}
-            onContextMenu={(e) => e.preventDefault()}
-          />
-        ) : null}
-      </ItemContainer>
-      <ItemContainer onClick={clickCrawledIdx}>
-        crawled idx: {crawledIdx}
-      </ItemContainer>
+      <Link
+        to={{
+          //watch라우터 만들고 라우팅 시키자
+          pathname: `/watch/${crawledIdx}`,
+          state: {
+            crawledIdx: crawledIdx,
+          },
+        }}
+      >
+        <ItemContainer>crawled idx: {crawledIdx}</ItemContainer>
+      </Link>
       <Form onSubmit={changeCrawledIdx}>
         <Input
           placeholder="Enter something to change crawledIdx"

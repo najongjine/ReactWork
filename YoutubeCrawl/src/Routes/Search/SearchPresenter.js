@@ -70,6 +70,7 @@ const SearchPresenter = ({
               {youTubeResult.map((youtube) => (
                 <Link
                   to={{
+                    //watch라우터 만들고 라우팅 시키자
                     pathname: `/ytcrawl/${youtube.videoId}`,
                     state: {
                       youtubeData: youtube,
