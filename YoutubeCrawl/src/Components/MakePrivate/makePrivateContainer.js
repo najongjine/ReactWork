@@ -6,11 +6,8 @@ import { makePrivate } from "./makePrivateAPI";
 export default class extends React.Component {
   constructor(props) {
     super(props);
-    const {
-      location: { pathname },
-    } = props;
+
     this.state = {
-      crawledIdx: this.props.crawledIdx ? this.props.crawledIdx : null,
       error: null,
       loading: true,
     };
@@ -21,22 +18,22 @@ export default class extends React.Component {
 
   makeVideoPrivate = async (event) => {
     event.preventDefault();
-    const { crawledIdx } = this.state;
+    const { crawledIdx } = this.props;
     if (!crawledIdx) {
       return <div>no crawled idx</div>;
     }
     let result = await makePrivate(crawledIdx);
     result = result.data;
+    console.log("## result: ", result);
     return <div>{result.msg}</div>;
   };
 
   render() {
     //model에 있는 데이터를 뷰로 보내주는 패턴
-    const { crawledIdx, error, loading } = this.state;
+    const { error, loading } = this.state;
     return (
       <MakePrivatePresenter
-        username={username}
-        password={password}
+        crawledIdx={this.props.crawledIdx}
         error={error}
         loading={loading}
         makeVideoPrivate={this.makeVideoPrivate}

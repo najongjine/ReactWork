@@ -1,5 +1,6 @@
 import React from "react";
 import WatchPresenter from "./WatchPresenter";
+
 import { youtubeCrawlApi, getNextCrawledIdx } from "./WatchAPI";
 
 //model 에 해당하는 패턴
@@ -20,7 +21,6 @@ export default class extends React.Component {
   // 컴포넌트가 탑재되면 이 이벤트 발생
   async componentDidMount() {
     try {
-      console.log("## props.location.state:", this.props.location.state);
       const { crawledIdx } = this.props.location.state;
 
       this.setState({ loading: false, crawledIdx: crawledIdx });

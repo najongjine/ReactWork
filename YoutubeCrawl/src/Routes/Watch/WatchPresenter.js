@@ -1,4 +1,6 @@
 import React from "react";
+//import MakePrivatePresenter from "../../Components/MakePrivate/makePrivatePresenter";
+import MakePrivateContainer from "../../Components/MakePrivate/makePrivateContainer";
 import ReactPlayer from "react-player";
 import styled from "styled-components";
 
@@ -33,6 +35,9 @@ const DetailPresenter = ({
         }}
         onContextMenu={(e) => e.preventDefault()}
       />
+    </div>
+    <div>
+      <MakePrivateContainer crawledIdx={crawledIdx} />
     </div>
     <div>crawled idx: {crawledIdx}</div>
     <form onSubmit={changeCrawledIdx}>

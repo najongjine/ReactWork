@@ -29,14 +29,13 @@ export default class extends React.Component {
   // 컴포넌트가 탑재되면 이 이벤트 발생
   async componentDidMount() {
     try {
-      console.log("## props.location.state:", this.props.location.state);
       const { youtubeData } = this.props.location.state;
       const { inputStr } = this.props.location.state;
 
       const {
         data: { crawledIdx },
       } = await youtubeCrawlApi.crawl(youtubeData, inputStr);
-      console.log("## youtubeData:", youtubeData);
+
       this.setState({
         loading: false,
         crawledIdx: crawledIdx,
@@ -58,7 +57,6 @@ export default class extends React.Component {
    * 함수를 내맘대로 만듬
    */
   clickCrawledIdx = async () => {
-    console.log("## clicked");
     this.setState((state) => ({
       showVideo: true,
     }));

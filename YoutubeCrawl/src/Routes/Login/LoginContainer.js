@@ -28,7 +28,7 @@ export default class extends React.Component {
     console.log(password);
     if (username && password) {
       const result = await login(username, password);
-      console.log("## result", result);
+      console.log("## login:", result);
     }
   };
 
