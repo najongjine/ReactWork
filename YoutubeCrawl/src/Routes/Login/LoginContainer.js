@@ -1,6 +1,6 @@
 import React from "react";
 import LoginPresenter from "./LoginPresenter";
-import { useDispatch } from "../../ReduX/context";
+import { login } from "./loginAPI";
 
 //model 에 해당하는 패턴
 export default class extends React.Component {
@@ -29,7 +29,6 @@ export default class extends React.Component {
     if (username && password) {
       const token = await login(username, password);
       console.log("## token:", token);
-      dispatch({ type: LOGIN, payload: token });
     }
   };
 

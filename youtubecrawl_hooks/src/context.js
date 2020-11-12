@@ -1,25 +1,25 @@
 import React, { createContext, useReducer, useContext } from "react";
 import reducer, { initialState } from "./reducer";
 
-const ToDosContext = createContext();
+const YtCrawlContext = createContext();
 
-const ToDosProvider = ({ children }) => {
+const YtCrawlProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
   return (
-    <ToDosContext.Provider value={{ state, dispatch }}>
+    <YtCrawlContext.Provider value={{ state, dispatch }}>
       {children}
-    </ToDosContext.Provider>
+    </YtCrawlContext.Provider>
   );
 };
 
 export const useDispatch = () => {
-  const { dispatch } = useContext(ToDosContext);
+  const { dispatch } = useContext(YtCrawlContext);
   return dispatch;
 };
 
 export const useState = () => {
-  const { state } = useContext(ToDosContext);
+  const { state } = useContext(YtCrawlContext);
   return state;
 };
 
-export default ToDosProvider;
+export default YtCrawlProvider;

@@ -3,7 +3,7 @@ import reducer, { initialState } from "./reducer";
 
 const LoginContext = createContext();
 
-const ToDosProvider = ({ children }) => {
+const LoginProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
   return (
     <LoginContext.Provider value={{ state, dispatch }}>
@@ -22,4 +22,4 @@ export const useState = () => {
   return state;
 };
 
-export default ToDosProvider;
+export default LoginProvider;

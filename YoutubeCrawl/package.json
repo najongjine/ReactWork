@@ -38,5 +38,10 @@
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-  ]
+  ],
+  "devDependencies": {
+    "core-decorators": "^0.20.0",
+    "customize-cra": "^1.0.0",
+    "react-app-rewired": "^2.1.6"
+  }
 }
